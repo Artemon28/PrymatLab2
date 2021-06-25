@@ -40,10 +40,11 @@ def goldenRatio(func, a, b, epsilon):
 def Fibonacci(func, a, b, epsilon):
     countIter = 0
     countFunc = 0
-    fib1 = 1
+    fib1 = 2
     fib2 = 1
-    fib3 = 0
-    while ((b - a) / epsilon) > fib1:
+    fib3 = 1
+    prev = b - a
+    while ((b - a) / epsilon) >= fib1:
         fib3 = fib2
         temp_fib = fib1
         fib1 = fib2 + fib1
@@ -71,10 +72,11 @@ def Fibonacci(func, a, b, epsilon):
             tmp1 = a + fib3 / fib1 * (b - a)
             ytmp1 = func(tmp1)
             countFunc += 1
-        fib3 = fib2
-        tmp_fib = fib1
-        fib1 = fib2 + fib1
-        fib2 = tmp_fib
+        prev = b - a
+        temp_fib = fib3
+        fib3 = fib2 - fib3
+        fib1 = fib2
+        fib2 = temp_fib
     tmp2 = tmp1 + epsilon
     ytmp2 = func(tmp2)
     countFunc += 1
@@ -82,4 +84,4 @@ def Fibonacci(func, a, b, epsilon):
         a = tmp1
     else:
         b = tmp2
-    return ((a + b) / 2)
+    return((a + b) / 2)

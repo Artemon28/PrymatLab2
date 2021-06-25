@@ -184,22 +184,22 @@ def test_on(func, grad, hesse, x0, eps, min_f, ans):
 
 def main():
     def func(x):
-        # return 7 * x[0] ** 2 + 2 * x[1] ** 2 + 2 * x[0] * x[1] + 9 * x[0] + 3 * x[1]
+        return 7 * x[0] ** 2 + 2 * x[1] ** 2 + 2 * x[0] * x[1] + 9 * x[0] + 3 * x[1]
         # return 6 * x[0]**2 - 4 * x[0]*x[1] + 3 * x[1]**2 + 4 * math.sqrt(5) * (x[0] + 2 * x[1]) + 22
-        return np.sin(x[0]) + x[1] ** 2
+        # return np.sin(x[0]) + x[1] ** 2
 
     def grad(x):
-        # return np.array([14 * x[0] + 2 * x[1] + 9, 2 * x[0] + 4 * x[1] + 3])
+        return np.array([14 * x[0] + 2 * x[1] + 9, 2 * x[0] + 4 * x[1] + 3])
         # return np.array([12*x[0] - 4 * x[1] + 4 * math.sqrt(5), -4 * x[0] + 6 * x[1] + 8 * math.sqrt(5)])
-        return np.array([np.cos(x[0]), 2*x[1]])
+        # return np.array([np.cos(x[0]), 2*x[1]])
 
     def hesse(x):
-        # return np.array([[14, 2], [2, 4]])
+        return np.array([[14, 2], [2, 4]])
         # return np.array([[12, -4], [-4, 6]])
-        return np.array([[-np.sin(x[0]), 0], [0, 2]])
+        # return np.array([[-np.sin(x[0]), 0], [0, 2]])
 
-    n_by_k(5)
-    # test_on(func, grad, hesse, np.array([4.0, 3.0]), 0.001, FuncMinimization.Fibonacci, [-0.08695585, -0.43478307])
+    # n_by_k(5)
+    test_on(func, grad, hesse, np.array([1000.0, 1000.0]), 0.001, FuncMinimization.Fibonacci, [-0.08695585, -0.43478307])
 
 
 
